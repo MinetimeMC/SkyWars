@@ -1,5 +1,6 @@
 package vc.pvp.skywars.listeners;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +17,8 @@ public class BlockListener implements Listener {
         Player player = event.getPlayer();
         GamePlayer gamePlayer = PlayerController.get().get(player);
 
-        if (gamePlayer.isPlaying() && gamePlayer.getGame().getState() == GameState.WAITING) {
+        if (gamePlayer.isPlaying() && (gamePlayer.getGame().getState() == GameState.WAITING
+        || gamePlayer.getGame().getState() == GameState.PLAYING && event.getBlock().getType().equals(Material.CHEST))) {
             event.setCancelled(true);
         }
     }
