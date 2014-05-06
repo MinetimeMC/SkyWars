@@ -86,7 +86,7 @@ public class SkyWars extends JavaPlugin {
                         .setVariable("prefix", SkyWars.getChat().getPlayerPrefix(gamePlayer.getBukkitPlayer()))
                         .format("chat.global");
                 Set<Player> players = new HashSet<Player>(Arrays.asList(Bukkit.getOnlinePlayers()));
-                AsyncPlayerChatEvent event = new AsyncPlayerChatEvent(true, (Player) sender, message, players);
+                AsyncPlayerChatEvent event = new AsyncPlayerChatEvent(false, (Player) sender, message, players);
                 Bukkit.getServer().getPluginManager().callEvent(event);
                 if (!event.isCancelled()) {
                     Bukkit.broadcastMessage(message);
